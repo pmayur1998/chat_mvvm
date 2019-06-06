@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data class ="Entrys">
+        <variable
+            name="alluserentry"
+            type="com.example.mayurpancholi.chat_mvvm.viewmodel.allusermodel"/>
+        <variable
+            name="recyclerclick"
+            type="com.example.mayurpancholi.chat_mvvm.interfaces.Presenters2"/>
+    </data>
+
+
+
+<LinearLayout
+     android:layout_width="match_parent"
+    android:layout_marginTop="10dp"
+    android:padding="10dp"
+    android:onClick="@{()->recyclerclick.onrecyclerviewclick()}"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/titleval"
+        android:textSize="20dp"
+        android:text="@{alluserentry.all_user}"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+       />
+
+</LinearLayout>
+</layout>

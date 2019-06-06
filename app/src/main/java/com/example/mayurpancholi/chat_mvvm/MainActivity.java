@@ -7,6 +7,8 @@ import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     String token;
+    Button btn;
 
     private ActivityMainBinding activityMainBinding;
     private DataManager dataManger;
@@ -49,26 +52,30 @@ public class MainActivity extends AppCompatActivity {
             public void clickLogin() {
 
                 String name = loginViewModel.getName();
-
-                if(!loginViewModel.isEmptyName(name)) {
+                Log.e("name",name);
+                if (!loginViewModel.isEmptyName(name)) {
 
                     showToast("please enter name");
-                }
-                else if(!loginViewModel.isValidName(name))
-                {
+                } else if (!loginViewModel.isValidName(name)) {
                     showToast("Enter valid name");
                 }
 
-                else
-                {
-                   dataManger.sendVolleyRequest(MainActivity.this, new DataValues() {
+                else {
+
+                    Log.e("name2",name);
+                    SharedPreferences pref = getSharedPreferences("MyPrefs1", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor edit = pref.edit();
+
+                    edit.remove("name");
+                    edit.apply();
+
+                    edit.putString("name", name);
+                    edit.apply();
+
+                    dataManger.sendVolleyRequest(name,MainActivity.this, new DataValues() {
                         @Override
                         public void setJsonDataResponse(JSONObject response) {
-
-
-
-
-                            try{
+                            try {
 
                                 token = response.getString("token");
 
@@ -80,20 +87,15 @@ public class MainActivity extends AppCompatActivity {
                                 edit.remove("sherdtoken");
                                 edit.apply();
 
-                                edit.putString("sherdtoken",token);
+                                edit.putString("sherdtoken", token);
                                 edit.apply();
 
-                               // Intent intent = new Intent(MainActivity.this, userlist.class);
-                                //startActivity(intent);
+                                 Intent intent = new Intent(MainActivity.this, userlist.class);
+                                startActivity(intent);
 
+                            } catch (Exception e) {
+                                Log.e("error", e.toString());
                             }
-                            catch (Exception e)
-                            {
-                                Log.e("error",e.toString());
-                            }
-
-
-
 
 
                         }
@@ -110,12 +112,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btn = (Button)findViewById(R.id.button1);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, userlist.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
     private void showToast(String s) {
 
-        Toast.makeText(this,s,Toast.LENGTH_LONG).show();
+        Toast.makeText(this, s, Toast.LENGTH_LONG).show();
 
     }
 }
