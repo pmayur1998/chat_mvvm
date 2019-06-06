@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="user"
+            type="com.example.mayurpancholi.chat_mvvm.viewmodel.LoginViewModel"/>
+
+        <variable
+            name="presenter"
+            type="com.example.mayurpancholi.chat_mvvm.interfaces.Presenters"/>
+
+    </data>
+
+<android.support.v7.widget.LinearLayoutCompat
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_height="match_parent"
+    tools:context="com.example.mayurpancholi.chat_mvvm.MainActivity">
+
+
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="317dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        tools:ignore="MissingConstraints"
+        android:text="@={user.name}"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="175dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="138dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="SIGN IN"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="20dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="120dp"
+
+        tools:layout_editor_absoluteY="265dp"
+        android:onClick="@{()->presenter.clickLogin()}"/>
+</android.support.v7.widget.LinearLayoutCompat>
+</layout>
