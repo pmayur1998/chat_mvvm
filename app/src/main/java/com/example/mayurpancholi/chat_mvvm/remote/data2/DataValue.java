@@ -2,7 +2,7 @@ package com.example.mayurpancholi.chat_mvvm.remote.data2;
 
 import com.android.volley.VolleyError;
 
-import org.json.JSONObject;
+import org.json.JSONArray;
 
 /**
  * Created by mayurpancholi on 06-06-2019.
@@ -10,6 +10,6 @@ import org.json.JSONObject;
 
 public interface DataValue {
 
-    public void setJsonDataResponse1(JSONObject response);
+    public void setJsonDataResponse1(JSONArray response);
     public void setVolleyError1(VolleyError volleyError);
 }

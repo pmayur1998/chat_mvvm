@@ -90,7 +90,7 @@ public class messageadapter extends RecyclerView.Adapter<messageadapter.CustomVi
 
         public void bind(messagemodel newsModel1)
         {
-                this.newsBinding.setMessageList(newsModel1.getMessage());
+              //  this.newsBinding.setMessage_list(newsModel1);
         }
 
         public MessageBinding getNewsBinding()

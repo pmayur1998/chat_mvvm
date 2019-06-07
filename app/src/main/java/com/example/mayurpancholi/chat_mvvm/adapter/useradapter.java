@@ -99,7 +99,9 @@ public class useradapter extends RecyclerView.Adapter<useradapter.CustomView> {
         }
 
         public void bind(allusermodel newsModel1)
+
         {
+            Log.e("bind", String.valueOf(newsModel1));
             this.newsBinding.setAlluserentry(newsModel1);
         }
 

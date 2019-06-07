@@ -8,11 +8,11 @@
     <data>
 
         <variable
-            name="post_msg"
+            name="postmsg"
             type="com.example.mayurpancholi.chat_mvvm.viewmodel.Postmessagemodel"/>
 
         <variable
-            name="post_btn"
+            name="postbtn"
             type="com.example.mayurpancholi.chat_mvvm.interfaces.Post"/>
 
     </data>
@@ -24,16 +24,15 @@
 
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/main_list1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="70dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="5dp"
-        android:paddingBottom="20dp"
-        tools:ignore="InvalidId"></android.support.v7.widget.RecyclerView>
+        android:id="@+id/recycle1"
+        android:scrollbars="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="80dp">
 
+    </android.support.v7.widget.RecyclerView>
 
     <EditText
         android:id="@+id/post_text"
@@ -42,7 +41,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="13dp"
-        android:text="@={post_msg.MSG}"
+        android:text="@={postmsg.MSG}"
         android:layout_marginLeft="9dp"
         android:ems="10"
         android:inputType="textPersonName" />
@@ -56,7 +55,7 @@
         android:layout_marginBottom="7dp"
         android:layout_marginRight="5dp"
         android:background="@color/colorPrimary"
-        android:onClick="@{()->post_btn.onclick()}"
+        android:onClick="@{()->postbtn.onclick()}"
         android:text="post" />
 
 </RelativeLayout>

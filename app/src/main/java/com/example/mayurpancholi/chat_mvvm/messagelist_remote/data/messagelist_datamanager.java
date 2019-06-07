@@ -1,58 +1,53 @@
-package com.example.mayurpancholi.chat_mvvm.remote.data2;
+package com.example.mayurpancholi.chat_mvvm.messagelist_remote.data;
 
 import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.example.mayurpancholi.chat_mvvm.remote.APICALL;
+import com.example.mayurpancholi.chat_mvvm.messagelist_remote.messagelist_APICALL;
 import com.example.mayurpancholi.chat_mvvm.remote.APICALL2;
 import com.example.mayurpancholi.chat_mvvm.remote.VolleySingleton;
-import com.example.mayurpancholi.chat_mvvm.remote.data.DataValues;
-import com.example.mayurpancholi.chat_mvvm.viewmodel.allusermodel;
+import com.example.mayurpancholi.chat_mvvm.remote.data2.DataValue;
 
 import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by mayurpancholi on 06-06-2019.
+ * Created by mayurpancholi on 07-06-2019.
  */
 
-public class DataManager2 {
+public class messagelist_datamanager {
 
-    private static final String TAG = "DataManager";
+    private static final String TAG = "messagelist_datamanager";
 
     // String name1;
 
     private Context context;
-    private int userid2;
 
 
-    public DataManager2(Context context) {
+
+    public messagelist_datamanager(Context context) {
 
         this.context = context;
     }
 
 
-    public void sendVolleyRequest1(final String token4, Context context, final DataValue dataValues) {
+    public void sendVolleyRequest2(final String usertoken,final int toid, Context context, final messagelist_datavalue dataValues) {
 
 
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(APICALL2.BASEURL, new Response.Listener<JSONArray>() {
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(messagelist_APICALL.BASEURL+toid, new Response.Listener<JSONArray>() {
 
 
             @Override
             public void onResponse(JSONArray response) {
-                Log.e("done",token4);
-                dataValues.setJsonDataResponse1(response);
+                Log.e("done",usertoken);
+                dataValues.setJsonDataResponse(response);
             }
 
 
@@ -62,8 +57,8 @@ public class DataManager2 {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.e("tokennnn",token4);
-                        dataValues.setVolleyError1(error);
+                        Log.e("tokennnn",usertoken);
+                        dataValues.setVolleyError(error);
                     }
                 }
 
@@ -72,8 +67,13 @@ public class DataManager2 {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 HashMap<String, String> headers = new HashMap<String,String>();
-                headers.put("Authorization",token4);
+                headers.put("Authorization",usertoken);
                 return headers;
+            }
+
+            @Override
+            public String getBodyContentType() {
+                return "application/json";
             }
 
         };
@@ -89,6 +89,5 @@ public class DataManager2 {
 
 
     }
-
 
 }
