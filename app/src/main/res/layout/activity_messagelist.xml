@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+
+        <variable
+            name="post_msg"
+            type="com.example.mayurpancholi.chat_mvvm.viewmodel.Postmessagemodel"/>
+
+        <variable
+            name="post_btn"
+            type="com.example.mayurpancholi.chat_mvvm.interfaces.Post"/>
+
+    </data>
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.mayurpancholi.chat_mvvm.messagelist">
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/main_list1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="70dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="5dp"
+        android:paddingBottom="20dp"
+        tools:ignore="InvalidId"></android.support.v7.widget.RecyclerView>
+
+
+    <EditText
+        android:id="@+id/post_text"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="13dp"
+        android:text="@={post_msg.MSG}"
+        android:layout_marginLeft="9dp"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/post_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/post_text"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="7dp"
+        android:layout_marginRight="5dp"
+        android:background="@color/colorPrimary"
+        android:onClick="@{()->post_btn.onclick()}"
+        android:text="post" />
+
+</RelativeLayout>
+</layout>

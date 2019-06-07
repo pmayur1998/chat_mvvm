@@ -37,7 +37,7 @@ public class allusermodel {
         return all_user;
     }
 
-    public void setAll_user(String All_user) {
-        all_user = All_user;
+    public void setAll_user(String all_user) {
+        this.all_user = all_user;
     }
 }

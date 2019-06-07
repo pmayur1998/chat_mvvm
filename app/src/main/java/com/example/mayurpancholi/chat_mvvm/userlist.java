@@ -115,7 +115,7 @@ public class userlist extends AppCompatActivity {
 
     }*/
 
-        dataManger.sendVolleyRequest1(token2,userlist.this, new DataValue() {
+        dataManger.sendVolleyRequest1(token2, userlist.this, new DataValue() {
 
             @Override
             public void setJsonDataResponse1(JSONObject response) {
@@ -124,17 +124,16 @@ public class userlist extends AppCompatActivity {
                 newsList = new ArrayList<>();
 
 
-                try{
+                try {
 
 
                     JSONArray jsonArray = response.getJSONArray("");
 
-                    for(int i =0 ; i <jsonArray.length() ;i++)
-                    {
+                    for (int i = 0; i < jsonArray.length(); i++) {
 
                         JSONObject jsonObject = response.getJSONObject(String.valueOf(i));
 
-                        userid=jsonObject.getInt("id");
+                        userid = jsonObject.getInt("id");
                         userModel.setId(jsonObject.getInt("id"));
                         userModel.setAll_user(jsonObject.getString("name"));
 
@@ -142,19 +141,12 @@ public class userlist extends AppCompatActivity {
                     }
 
 
-
-
-
-
-                }
-                catch (JSONException jsonDataResponse)
-                {
+                } catch (JSONException jsonDataResponse) {
                     Log.e("error", String.valueOf(jsonDataResponse));
 
                 }
 
                 customAdapter.notifyDataSetChanged();
-
 
 
             }
@@ -166,8 +158,8 @@ public class userlist extends AppCompatActivity {
         });
 
 
-
     }
 }
+
 
 

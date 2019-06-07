@@ -17,7 +17,7 @@
      android:layout_width="match_parent"
     android:layout_marginTop="10dp"
     android:padding="10dp"
-    android:onClick="@{()->recyclerclick.onrecyclerviewclick()}"
+    android:onClick="@{()->recyclerclick.onclickListener()}"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
