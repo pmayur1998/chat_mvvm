@@ -62,15 +62,6 @@ public class MainActivity extends AppCompatActivity {
 
                 else {
 
-                    Log.e("name2",name);
-                    SharedPreferences pref = getSharedPreferences("MyPrefs1", Context.MODE_PRIVATE);
-                    SharedPreferences.Editor edit = pref.edit();
-
-                    edit.remove("name");
-                    edit.apply();
-
-                    edit.putString("name", name);
-                    edit.apply();
 
                     dataManger.sendVolleyRequest(name,MainActivity.this, new DataValues() {
                         @Override

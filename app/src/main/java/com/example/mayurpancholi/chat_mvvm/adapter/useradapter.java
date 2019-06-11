@@ -24,32 +24,30 @@ import java.util.List;
 
 public class useradapter extends RecyclerView.Adapter<useradapter.CustomView> {
 
-   String nn = "m";
+    String nn = "m";
 
     List<allusermodel> list1;
     private Context context;
     private LayoutInflater layoutInflater;
 
 
-    public useradapter(Context context,List<allusermodel> list1)
-    {
-        Log.e("reached1",nn);
-        this.context =context;
+    public useradapter(Context context, List<allusermodel> list1) {
+        Log.e("reached1", nn);
+        this.context = context;
         this.list1 = list1;
-    }
 
+    }
 
 
     @Override
     public CustomView onCreateViewHolder(final ViewGroup parent, final int viewType) {
 
-        Log.e("reached2",nn);
-        if(layoutInflater == null)
-        {
+        Log.e("reached2", nn);
+        if (layoutInflater == null) {
             layoutInflater = LayoutInflater.from(parent.getContext());
         }
 
-        final Entrys newsBinding  = Entrys.inflate(layoutInflater,parent,false);
+        final Entrys newsBinding = Entrys.inflate(layoutInflater, parent, false);
 
 
         //  View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.innerlayout,parent,false);
@@ -57,19 +55,20 @@ public class useradapter extends RecyclerView.Adapter<useradapter.CustomView> {
     }
 
     @Override
-    public void onBindViewHolder(CustomView holder, int position) {
-        Log.e("reached3",nn);
+    public void onBindViewHolder(CustomView holder,int position) {
+        Log.e("reached3", nn);
 
         //  News news = newsList.get(position);
 
         // holder.desc.setText(news.getDesc());
 
-        allusermodel newsModel1 = list1.get(position);
-       // holder.title.setText(newsModel1.getAll_user());
+         allusermodel newsModel1 = list1.get(position);
+       // Log.e("list", String.valueOf(list1));
+        Log.e("nameeeee", String.valueOf(newsModel1.getId()));
+       // Log.e("position", String.valueOf(position));
+
         //Log.e("names",newsModel1.getAll_user());
         holder.bind(newsModel1);
-
-
 
 
     }
@@ -77,30 +76,31 @@ public class useradapter extends RecyclerView.Adapter<useradapter.CustomView> {
     @Override
     public int getItemCount() {
         return list1.size();
+
     }
 
     public class CustomView extends RecyclerView.ViewHolder {
 
         private Entrys newsBinding;
-        public TextView title;
+       // public TextView title;
 
-        // TextView title, desc;
+         //TextView title, desc;
         public CustomView(Entrys newsBinding) {
             super(newsBinding.getRoot());
 
             this.newsBinding = newsBinding;
-            Log.e("reached4",nn);
-            //title = (TextView)itemView.findViewById(R.id.titleval);
+            Log.e("reached4", nn);
+           // title = (TextView)itemView.findViewById(R.id.titleval);
             //desc =(TextView)itemView.findViewById(R.id.descval);
             newsBinding.setRecyclerclick(new Presenters2() {
                 @Override
                 public void onclickListener() {
 
                     int pos = getAdapterPosition();
-                    if(pos != RecyclerView.NO_POSITION) {
+                    if (pos != RecyclerView.NO_POSITION) {
                         allusermodel clickedDataItem = list1.get(pos);
 
-                        Intent intent = new Intent(context,messagelist.class);
+                        Intent intent = new Intent(context, messagelist.class);
                         intent.putExtra("clickid", clickedDataItem.getId());
 
                         context.startActivity(intent);
@@ -113,16 +113,15 @@ public class useradapter extends RecyclerView.Adapter<useradapter.CustomView> {
         public void bind(allusermodel newsModel1)
 
         {
-            Log.e("reached5",nn);
+            Log.e("reached5", String.valueOf(newsModel1));
             //String j = newsModel1.getAll_user();
-           // Log.e("bind",nn);
+            // Log.e("bind",nn);
             this.newsBinding.setAlluserentry(newsModel1);
         }
 
 
-        public Entrys getNewsBinding()
-        {
-            Log.e("reached6",nn);
+        public Entrys getNewsBinding() {
+            Log.e("reached6", nn);
             return newsBinding;
         }
 

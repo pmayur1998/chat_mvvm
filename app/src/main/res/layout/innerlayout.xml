@@ -27,7 +27,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/titleval"
         android:textSize="20dp"
-
         android:text="@{alluserentry.all_user}"
         android:textStyle="bold"
         android:layout_marginTop="10dp"

@@ -19,11 +19,11 @@ public class allusermodel extends BaseObservable {
     public allusermodel() {
     }
 
-    public allusermodel(int id,String name ) {
+    public allusermodel(allusers user) {
 
 
-        this.id = id;
-        this.all_user = name;
+        this.id = user.id;
+        this.all_user = user.all_user;
 
 
     }
@@ -42,6 +42,13 @@ public class allusermodel extends BaseObservable {
 
     public void setAll_user(String all_user) {
         this.all_user = all_user;
+    }
+    @Override
+    public String toString() {
+        return "allusermodel{" +
+                "id=" + id +
+                ", all_user='" + all_user + '\'' +
+                '}';
     }
 
 }

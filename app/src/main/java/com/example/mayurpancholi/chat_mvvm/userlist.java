@@ -25,6 +25,8 @@ import java.util.List;
 
 public class userlist extends AppCompatActivity {
 
+    private static final String TAG = "userlist";
+
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
     private DividerItemDecoration dividerItemDecoration;
@@ -60,7 +62,7 @@ public class userlist extends AppCompatActivity {
         newsList = new ArrayList<>();
         adapter = new useradapter(getApplicationContext(),newsList);
 
-        linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(), linearLayoutManager.getOrientation());
 
@@ -81,23 +83,23 @@ public class userlist extends AppCompatActivity {
             @Override
             public void setJsonDataResponse1(JSONArray response) {
 
-                allusermodel userModel = new allusermodel();
-                newsList = new ArrayList<>();
-                for (int i = 0; i < response.length(); i++) {
 
+               // newsList = new ArrayList<>();
+                for (int i = 0; i < response.length(); i++) {
+                    allusermodel userModel = new allusermodel();
                     try {
 
 
                         JSONObject jsonObject = response.getJSONObject(i);
                        // Log.e("final", String.valueOf(i));
-                        userid = jsonObject.getInt("id");
+                      //  userid = jsonObject.getInt("id");
                         userModel.setId(jsonObject.getInt("id"));
                       //  Log.e("getid", String.valueOf(jsonObject.getInt("id")));
                         userModel.setAll_user(jsonObject.getString("name"));
                        // Log.e("getname", String.valueOf(jsonObject.getString("name")));
 
                         newsList.add(userModel);
-
+                       // Log.e("userlist", String.valueOf(userModel.getId()));
 
 
 
@@ -106,6 +108,7 @@ public class userlist extends AppCompatActivity {
 
                     }
                 }
+
 
                 adapter.notifyDataSetChanged();
 
