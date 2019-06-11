@@ -1,12 +1,15 @@
 package com.example.mayurpancholi.chat_mvvm.viewmodel;
 
+import android.arch.lifecycle.ViewModel;
+import android.databinding.BaseObservable;
+
 import com.example.mayurpancholi.chat_mvvm.model.allusers;
 
 /**
  * Created by mayurpancholi on 06-06-2019.
  */
 
-public class allusermodel {
+public class allusermodel extends BaseObservable {
 
 
     public int id;
@@ -16,11 +19,11 @@ public class allusermodel {
     public allusermodel() {
     }
 
-    public allusermodel(allusers user2) {
+    public allusermodel(int id,String name ) {
 
 
-      this.id= user2.id;
-      this.all_user=user2.all_user;
+        this.id = id;
+        this.all_user = name;
 
 
     }
@@ -40,4 +43,7 @@ public class allusermodel {
     public void setAll_user(String all_user) {
         this.all_user = all_user;
     }
+
 }
+
+

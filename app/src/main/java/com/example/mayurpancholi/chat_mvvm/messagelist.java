@@ -20,6 +20,7 @@ import com.example.mayurpancholi.chat_mvvm.messagelist_remote.data.messagelist_d
 
 import com.example.mayurpancholi.chat_mvvm.messagelist_remote.data.messagelist_datavalue;
 
+import com.example.mayurpancholi.chat_mvvm.model.Postmessage;
 import com.example.mayurpancholi.chat_mvvm.postmessage_remote.data.postmessage_datamanager;
 import com.example.mayurpancholi.chat_mvvm.postmessage_remote.data.postmessage_datavalue;
 import com.example.mayurpancholi.chat_mvvm.remote.data.DataValues;
@@ -60,18 +61,18 @@ public class messagelist extends AppCompatActivity {
         tokens = pref.getString("sherdtoken", "");
         Log.e("token", tokens);
 
-        activityMainBinding1 = DataBindingUtil.setContentView(this, R.layout.activity_messagelist);
+        activityMainBinding1 = DataBindingUtil.setContentView(this,R.layout.activity_messagelist);
 
         postmessagemodel = new Postmessagemodel();
         postmessage_datamanager = new postmessage_datamanager(this);
 
-        activityMainBinding1.setPostmsg(postmessagemodel);
-        activityMainBinding1.setPostbtn(new Post() {
+        //activityMainBinding1.setPostmsg(postmessagemodel);
+       /* activityMainBinding1.setPostbtn(new Post() {
             @Override
             public void onclick() {
                 postmessage();
             }
-        });
+        });*/
 
         sendmsg = postmessagemodel.getMSG();
         dataManger = new messagelist_datamanager(this);
@@ -84,6 +85,7 @@ public class messagelist extends AppCompatActivity {
         recyclerView.setAdapter(customAdapter);
 
         getmessage();
+        postmessage();
 
     }
 

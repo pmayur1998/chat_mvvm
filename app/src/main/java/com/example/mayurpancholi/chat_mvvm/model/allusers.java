@@ -12,8 +12,8 @@ public class allusers {
 
     public allusers(int Id,String All_user ) {
 
-        id = Id;
-        all_user = All_user;
+        this.id = Id;
+        this.all_user = All_user;
 
 
     }
@@ -25,3 +25,7 @@ public class allusers {
 
 
 }
+
+
+
+

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.mayurpancholi.chat_mvvm.databinding.Entrys;
@@ -20,7 +21,7 @@ import java.util.List;
  * Created by mayurpancholi on 07-06-2019.
  */
 
-public class messageadapter extends RecyclerView.Adapter<messageadapter.CustomView> {
+public class messageadapter extends RecyclerView.Adapter<messageadapter.CustomView1> {
 
 
     List<messagemodel> list;
@@ -38,11 +39,8 @@ public class messageadapter extends RecyclerView.Adapter<messageadapter.CustomVi
 
     }
 
-
     @Override
-    public messageadapter.CustomView onCreateViewHolder(final ViewGroup parent, final int viewType) {
-
-
+    public messageadapter.CustomView1 onCreateViewHolder(ViewGroup parent, int viewType) {
         if(layoutInflater == null)
         {
             layoutInflater = LayoutInflater.from(parent.getContext());
@@ -52,22 +50,13 @@ public class messageadapter extends RecyclerView.Adapter<messageadapter.CustomVi
 
 
         //  View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.innerlayout,parent,false);
-        return new CustomView(newsBinding);
+        return new CustomView1(newsBinding);
     }
 
     @Override
-    public void onBindViewHolder(messageadapter.CustomView holder, int position) {
-
-        //  News news = newsList.get(position);
-        // holder.title.setText(news.getTitle());
-        // holder.desc.setText(news.getDesc());
-
+    public void onBindViewHolder(messageadapter.CustomView1 holder, int position) {
         messagemodel newsModel = list.get(position);
         holder.bind(newsModel);
-
-
-
-
     }
 
     @Override
@@ -75,11 +64,10 @@ public class messageadapter extends RecyclerView.Adapter<messageadapter.CustomVi
         return list.size();
     }
 
-    public class CustomView extends RecyclerView.ViewHolder {
-
+    public class CustomView1 extends RecyclerView.ViewHolder {
         private MessageBinding newsBinding;
         // TextView title, desc;
-        public CustomView(MessageBinding newsBinding) {
+        public CustomView1(MessageBinding newsBinding) {
             super(newsBinding.getRoot());
 
             this.newsBinding = newsBinding;
@@ -90,15 +78,15 @@ public class messageadapter extends RecyclerView.Adapter<messageadapter.CustomVi
 
         public void bind(messagemodel newsModel1)
         {
-              //  this.newsBinding.setMessage_list(newsModel1);
+            //  this.newsBinding.setMessage_list(newsModel1);
         }
 
         public MessageBinding getNewsBinding()
         {
             return newsBinding;
         }
-
     }
+
 
 
 }

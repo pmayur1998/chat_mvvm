@@ -6,11 +6,12 @@
         <variable
             name="alluserentry"
             type="com.example.mayurpancholi.chat_mvvm.viewmodel.allusermodel"/>
+
         <variable
             name="recyclerclick"
             type="com.example.mayurpancholi.chat_mvvm.interfaces.Presenters2"/>
-    </data>
 
+    </data>
 
 
 <LinearLayout
@@ -26,6 +27,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/titleval"
         android:textSize="20dp"
+
         android:text="@{alluserentry.all_user}"
         android:textStyle="bold"
         android:layout_marginTop="10dp"

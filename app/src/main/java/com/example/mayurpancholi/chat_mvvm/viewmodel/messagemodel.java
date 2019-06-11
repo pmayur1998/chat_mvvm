@@ -1,12 +1,14 @@
 package com.example.mayurpancholi.chat_mvvm.viewmodel;
 
+import android.databinding.BaseObservable;
+
 import com.example.mayurpancholi.chat_mvvm.model.Msg;
 
 /**
  * Created by mayurpancholi on 07-06-2019.
  */
 
-public class messagemodel {
+public class messagemodel  extends BaseObservable {
 
     public String message;
     public int fromUserId;
