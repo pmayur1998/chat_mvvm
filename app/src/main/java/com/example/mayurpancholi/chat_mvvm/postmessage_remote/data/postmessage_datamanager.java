@@ -9,6 +9,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.mayurpancholi.chat_mvvm.postmessage_remote.postmessage_APICALL;
 import com.example.mayurpancholi.chat_mvvm.remote.APICALL;
 import com.example.mayurpancholi.chat_mvvm.remote.VolleySingleton;
 import com.example.mayurpancholi.chat_mvvm.remote.data.DataValues;
@@ -43,10 +44,11 @@ public class postmessage_datamanager
     public void sendVolleyRequest3(final String msg,final int touserid,final String token_, Context context, final postmessage_datavalue dataValues) {
 
 
-        // Log.e( "sendVolleyRequest3: ",loginViewModel.getName() );
-
+         Log.e( "sendVolleyRequest1: ",msg);
+        Log.e( "sendVolleyRequest2: ",token_);
+        Log.e( "sendVolleyRequest3: ", String.valueOf(touserid));
         JSONObject jsonParams = new JSONObject();
-        //Map<String, String> jsonParams = new HashMap<String, String>();
+
         try {
             jsonParams.put("message", msg);
             jsonParams.put("toUserId",touserid);
@@ -56,31 +58,11 @@ public class postmessage_datamanager
 
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
-                APICALL.BASEURL,
-                jsonParams,
+                postmessage_APICALL.BASEURL,
+                jsonParams,null
 
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Log.e(TAG, "onResponse: " + response);
+               ,null
 
-                        // showData(response.toString());
-
-                        dataValues.setJsonDataResponse(response);
-
-
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        //Log.e("hi",loginViewModel.getName());
-                        Log.e("sendVolleyRequest2: ", APICALL.BASEURL + " Name : " + msg);
-                        Log.e(TAG, "onErrorResponse: " + error.getLocalizedMessage());
-                        // showData(error.toString());
-                        dataValues.setVolleyError(error);
-                    }
-                }
 
         ) {
 

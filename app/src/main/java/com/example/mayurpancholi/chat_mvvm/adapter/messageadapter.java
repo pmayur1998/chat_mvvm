@@ -3,10 +3,13 @@ package com.example.mayurpancholi.chat_mvvm.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.example.mayurpancholi.chat_mvvm.R;
 import com.example.mayurpancholi.chat_mvvm.databinding.Entrys;
 import com.example.mayurpancholi.chat_mvvm.databinding.MessageBinding;
 import com.example.mayurpancholi.chat_mvvm.interfaces.Post;
@@ -21,7 +24,7 @@ import java.util.List;
  * Created by mayurpancholi on 07-06-2019.
  */
 
-public class messageadapter extends RecyclerView.Adapter<messageadapter.CustomView1> {
+public class messageadapter extends RecyclerView.Adapter<messageadapter.CustomView1_msg> {
 
 
     List<messagemodel> list;
@@ -40,23 +43,25 @@ public class messageadapter extends RecyclerView.Adapter<messageadapter.CustomVi
     }
 
     @Override
-    public messageadapter.CustomView1 onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CustomView1_msg onCreateViewHolder(ViewGroup parent, int viewType) {
         if(layoutInflater == null)
         {
             layoutInflater = LayoutInflater.from(parent.getContext());
         }
 
-        final MessageBinding newsBinding  = MessageBinding.inflate(layoutInflater,parent,false);
+        final MessageBinding messageBinding  = MessageBinding.inflate(layoutInflater,parent,false);
 
 
         //  View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.innerlayout,parent,false);
-        return new CustomView1(newsBinding);
+        return new CustomView1_msg(messageBinding);
     }
 
     @Override
-    public void onBindViewHolder(messageadapter.CustomView1 holder, int position) {
+    public void onBindViewHolder(CustomView1_msg holder, int position) {
         messagemodel newsModel = list.get(position);
+
         holder.bind(newsModel);
+       // holder.title.setGravity(Gravity.RIGHT);
     }
 
     @Override
@@ -64,26 +69,30 @@ public class messageadapter extends RecyclerView.Adapter<messageadapter.CustomVi
         return list.size();
     }
 
-    public class CustomView1 extends RecyclerView.ViewHolder {
-        private MessageBinding newsBinding;
+    public class CustomView1_msg extends RecyclerView.ViewHolder
+    {
+        private MessageBinding messageBinding;
         // TextView title, desc;
-        public CustomView1(MessageBinding newsBinding) {
-            super(newsBinding.getRoot());
+        public CustomView1_msg(MessageBinding messageBinding)
+        {
+            super(messageBinding.getRoot());
 
-            this.newsBinding = newsBinding;
-            //title = (TextView)itemView.findViewById(R.id.titleval);
+            this.messageBinding = messageBinding;
+           // title = (TextView)itemView.findViewById(R.id.titleval);
             //desc =(TextView)itemView.findViewById(R.id.descval);
 
         }
 
-        public void bind(messagemodel newsModel1)
+        public void bind(messagemodel messagemodel)
         {
-            //  this.newsBinding.setMessage_list(newsModel1);
+            this.messageBinding.setMessagelist(messagemodel);
+
+
         }
 
         public MessageBinding getNewsBinding()
         {
-            return newsBinding;
+            return messageBinding;
         }
     }
 

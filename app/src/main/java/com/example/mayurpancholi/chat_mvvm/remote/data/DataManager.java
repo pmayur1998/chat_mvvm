@@ -43,7 +43,7 @@ public class DataManager {
     public void sendVolleyRequest(final String name3, Context context, final DataValues dataValues) {
 
 
-        // Log.e( "sendVolleyRequest3: ",loginViewModel.getName() );
+         Log.e( "sendVolleyRequest: ",name3 );
 
         JSONObject jsonParams = new JSONObject();
         //Map<String, String> jsonParams = new HashMap<String, String>();

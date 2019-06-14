@@ -4,14 +4,14 @@
 
     <data class ="MessageBinding">
     <variable
-        name="message_list"
+        name="messagelist"
         type="com.example.mayurpancholi.chat_mvvm.viewmodel.messagemodel"/>
     </data>
 
 
 <LinearLayout
      android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="10dp">
 
@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="10dp"
-        android:text="@{message_list.message}"
+        android:text="@{messagelist.message}"
         android:textSize="17dp" />
 </LinearLayout>
 </layout>

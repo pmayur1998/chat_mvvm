@@ -2,6 +2,7 @@ package com.example.mayurpancholi.chat_mvvm.viewmodel;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
+import android.util.Log;
 
 import com.example.mayurpancholi.chat_mvvm.BR;
 import com.example.mayurpancholi.chat_mvvm.model.Postmessage;
@@ -29,5 +30,6 @@ public class Postmessagemodel  extends BaseObservable {
 
     public void setMSG(String MSG) {
         this.MSG = MSG;
+        Log.e("MSG",MSG);
     }
 }
